@@ -1,6 +1,8 @@
 // import logo from './logo.svg';
 import "./App.css";
+import Approutes from "./AppRoutes";
 import Header from "./components/Header/Header";
+import PageTitle from "./components/PageTitle/PageTitle";
 import SearchBar from "./components/SearchBar/SearchBar";
 
 function App() {
@@ -9,12 +11,15 @@ function App() {
       <Header />
       <main style={{ marginLeft: "300px", overflowX: "hidden" }}>
         <div className="row">
+          <div className="col-12">
+            <PageTitle />
+          </div>
           <div className="col-10 col-md-4 offset-md-4">
             <SearchBar />
           </div>
         </div>
         {/* <Menu /> */}
-        {/* <Approutes /> */}
+        <Approutes />
       </main>
     </div>
   );
