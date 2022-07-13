@@ -6,7 +6,8 @@ function Details(params) {
   console.log(currentObject);
   return (
     <div className="row p-5">
-      <h5>DETAILS</h5>
+      <h5>{currentObject && currentObject.name }</h5>
+      <h5>{currentObject && currentObject.title }</h5>
       <div className="card">
         {currentObject && (
           <div className="card-body">
