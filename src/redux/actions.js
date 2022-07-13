@@ -39,6 +39,25 @@ export const setObjectToDetails = (objet) => {
     };
   };
 
+  export const search = (newTitle, text) => {
+    return async (dispacth) => {
+      if (KEYS.includes(newTitle)) {
+        const url = BASE_URL + newTitle + "?search="+text;
+        const newType = getType(newTitle);
+        try {
+          const response = await fetch(url);
+          const { results } = await response.json();
+          dispacth({
+            type: newType,
+            payload: results,
+          });
+        } catch (err) {
+          console.log("LOG ::: ERROR >>> ", err);
+        }
+      }
+    };
+  };
+
 const getType = (title) => {
   switch (title) {
     case "films":

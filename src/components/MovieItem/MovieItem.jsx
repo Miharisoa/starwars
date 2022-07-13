@@ -34,7 +34,7 @@ function MovieItem({movie}) {
   return (
     <div className="card">
       <div className="card-body">
-        <a href=""><h5>{movie.title}</h5></a>
+        <a style={{color: "tomato", cursor: "pointer"}} onClick={onClickMovie}><h5>{movie.title}</h5></a>
         
         <ReadMore text={movie.opening_crawl} />
         

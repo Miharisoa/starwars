@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setObjectToDetails, setTitle } from "../../redux/actions";
 import MovieItem from "../../components/MovieItem/MovieItem";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 function Listing(props) {
   const dispatch = useDispatch();
@@ -16,8 +17,8 @@ function Listing(props) {
 
   const onSelect = (element) => {
     dispatch(setObjectToDetails(element));
-    return navigate('/details');
-  }
+    return navigate("/details");
+  };
 
   useEffect(() => {
     const title = searchParams.get("category");
@@ -47,23 +48,34 @@ function Listing(props) {
     setListTitle(title);
   }, [searchParams]);
 
-  useEffect(() => {
-
-  }, [currentObject]);
+  useEffect(() => {}, [currentObject]);
 
   return (
-    <div className="row p-4">
+    <div className="row px-4">
+      <div className="col-12 col-md-6 offset-md-3">
+        <SearchBar />
+      </div>
       {listTitle === "films" &&
         movies.map((e) => (
           <div className="col-md-4 p-2">
             <MovieItem movie={e} />
           </div>
         ))}
-      {listTitle === "people" && <ListPeople list={peoples} onClickButton={onSelect}/>}
-      {listTitle === "planets" && <ListPlanets list={planets} onClickButton={onSelect}/>}
-      {listTitle === "species" && <ListSpecies list={species} onClickButton={onSelect}/>}
-      {listTitle === "starships" && <ListStarships list={starships} onClickButton={onSelect}/>}
-      {listTitle === "vehicles" && <ListVehicles list={vehicles} onClickButton={onSelect}/>}
+      {listTitle === "people" && (
+        <ListPeople list={peoples} onClickButton={onSelect} />
+      )}
+      {listTitle === "planets" && (
+        <ListPlanets list={planets} onClickButton={onSelect} />
+      )}
+      {listTitle === "species" && (
+        <ListSpecies list={species} onClickButton={onSelect} />
+      )}
+      {listTitle === "starships" && (
+        <ListStarships list={starships} onClickButton={onSelect} />
+      )}
+      {listTitle === "vehicles" && (
+        <ListVehicles list={vehicles} onClickButton={onSelect} />
+      )}
     </div>
   );
 }
@@ -75,7 +87,7 @@ export const ListPeople = ({ list, onClickButton }) => {
         <div className="col-md-4 p-2" key={e.name}>
           <div className="card">
             <div className="card-body">
-              <a href="">
+              <a onClick={() => onClickButton(e)} style={{color: "tomato", cursor: "pointer"}}>
                 <h5>{e.name}</h5>
               </a>
 
@@ -102,7 +114,7 @@ export const ListSpecies = ({ list, onClickButton }) => {
         <div className="col-md-4 p-2" key={e.name}>
           <div className="card">
             <div className="card-body">
-              <a href="">
+              <a onClick={() => onClickButton(e)} style={{color: "tomato", cursor: "pointer"}}>
                 <h5>{e.name}</h5>
               </a>
 
@@ -129,7 +141,7 @@ export const ListPlanets = ({ list, onClickButton }) => {
         <div className="col-md-4 p-2" key={e.name}>
           <div className="card">
             <div className="card-body">
-              <a href="">
+              <a onClick={() => onClickButton(e)} style={{color: "tomato", cursor: "pointer"}}>
                 <h5>{e.name}</h5>
               </a>
 
@@ -156,7 +168,7 @@ export const ListStarships = ({ list, onClickButton }) => {
         <div className="col-md-4 p-2" key={e.name}>
           <div className="card">
             <div className="card-body">
-              <a href="">
+              <a onClick={() => onClickButton(e)} style={{color: "tomato", cursor: "pointer"}}>
                 <h5>{e.name}</h5>
               </a>
 
@@ -183,7 +195,7 @@ export const ListVehicles = ({ list, onClickButton }) => {
         <div className="col-md-4 p-2" key={e.name}>
           <div className="card">
             <div className="card-body">
-              <a href="">
+              <a onClick={() => onClickButton(e)} style={{color: "tomato", cursor: "pointer"}}>
                 <h5>{e.name}</h5>
               </a>
 

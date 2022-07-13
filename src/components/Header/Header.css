@@ -5,7 +5,8 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background: linear-gradient(180deg,#FF6633 27.6%, #800080);
+    background-color: tomato;
+    /* background: linear-gradient(180deg,#FF6633 27.6%, #800080); */
     overflow-x: hidden;
     padding-top: 20px;
   }

@@ -5,8 +5,8 @@ function Details(params) {
   const { currentObject } = useSelector((state) => state.reducer);
   console.log(currentObject);
   return (
-    <div className="row px-5">
-      <h1>DETAILS</h1>
+    <div className="row p-5">
+      <h5>DETAILS</h5>
       <div className="card">
         {currentObject && (
           <div className="card-body">

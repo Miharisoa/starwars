@@ -14,9 +14,6 @@ function App() {
           <div className="col-12">
             <PageTitle />
           </div>
-          <div className="col-10 col-md-4 offset-md-4">
-            <SearchBar />
-          </div>
         </div>
         {/* <Menu /> */}
         <Approutes />
