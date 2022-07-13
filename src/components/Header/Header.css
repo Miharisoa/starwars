@@ -1,0 +1,16 @@
+#sidenav {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg,#FF6633 27.6%, #800080);
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  /* @media screen and (max-height: 450px) {
+    #sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  } */
