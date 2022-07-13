@@ -5,28 +5,39 @@ import { Dispatch } from "redux";
 import { BASE_URL } from "../constants";
 // import { dispatchStore } from "./store";
 
+const KEYS = ["films", "people", "species", "starships", "vehicles", "planets"];
+
 export const setTitle = (newTitle) => {
   return async (dispacth) => {
     dispacth({
       type: "SET_TITLE",
       payload: newTitle,
     });
-    if (newTitle.length > 0) {
+    if (KEYS.includes(newTitle)) {
       const url = BASE_URL + newTitle;
       const newType = getType(newTitle);
       try {
         const response = await fetch(url);
         const { results } = await response.json();
         dispacth({
-            type: newType,
-            payload: results
-        })
+          type: newType,
+          payload: results,
+        });
       } catch (err) {
         console.log("LOG ::: ERROR >>> ", err);
       }
     }
   };
 };
+
+export const setObjectToDetails = (objet) => {
+    return async (dispacth) => {
+      dispacth({
+        type: "SET_OBJECT",
+        payload: objet,
+      });
+    };
+  };
 
 const getType = (title) => {
   switch (title) {
@@ -42,50 +53,10 @@ const getType = (title) => {
       return "SET_VEHICLES";
     case "planets":
       return "SET_PLANETS";
+    case "vehicles":
+      return "SET_VEHICLES";
     default:
       return "";
   }
 };
 
-// export const setPopularMovies = () => {
-//   return async (dispatch) => {
-//     // dispatch({
-//     //     type: ActionType.SET_POPULAR_MOVIES
-//     // });
-//     const url = BASE_URL + "movie/popular?api_key=" + TM_DB_API_KEY;
-
-//     try {
-//       const response = await fetch(url);
-//       const { results } = await response.json();
-
-//       console.log("DATA AFTER AXIOS >>> ", results);
-
-//       dispatch({
-//         type: ActionType.SET_POPULAR_MOVIES,
-//         payload: results,
-//       });
-//     } catch (err) {
-//       console.log("THERE IS ERROR >>> ", err);
-//     }
-//   };
-// };
-
-// export const setParticularMovie = (id: number) => {
-//   return async (dispatch: Dispatch<Action>) => {
-//     const url = BASE_URL + "movie/" + id + "?api_key=" + TM_DB_API_KEY;
-
-//     try {
-//       const response = await fetch(url);
-//       const movie = await response.json();
-
-//       console.log("movie AFTER AXIOS >>> ", movie);
-
-//       dispatch({
-//         type: ActionType.SET_PARTICULAR_MOVIE,
-//         payload: movie,
-//       });
-//     } catch (err) {
-//       console.log("THERE IS ERROR >>> ", err);
-//     }
-//   };
-// };

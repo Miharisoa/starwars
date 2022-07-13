@@ -1,12 +1,14 @@
 // import { Action, ActionType, ApplicationState, Movie } from "./actionTypes";
 
 const initialState = {
-  title: "Home",
+  title: "",
   movies: [],
   peoples: [],
   species: [],
   planets: [],
   starships: [],
+  vehicles: [],
+  currentObject: null,
 };
 
 export const appReducer = (state = initialState, action) => {
@@ -23,18 +25,10 @@ export const appReducer = (state = initialState, action) => {
       return { ...state, planets: action.payload };
     case "SET_STARSHIPS":
       return { ...state, starships: action.payload };
-    // case ActionType.GET_POPULAR_MOVIES:
-    //   return state;
-    // case ActionType.SET_POPULAR_MOVIES:
-    //   return {
-    //     ...state,
-    //     popularMovies: action.payload,
-    //   };
-    // case ActionType.SET_PARTICULAR_MOVIE:
-    //   return {
-    //     ...state,
-    //     particularMovie: action.payload,
-    //   };
+    case "SET_VEHICLES":
+      return { ...state, vehicles: action.payload };
+    case "SET_OBJECT":
+      return { ...state, currentObject: action.payload };
     default:
       return state;
   }

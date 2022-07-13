@@ -25,8 +25,8 @@ function Header() {
           // maybe push to the route
           console.log("itemId >>> ", itemId);
           let route = "/";
-          let title = "Bienvenue"
-          if (itemId !== "/") {
+          let title = ""
+          if (itemId !== "/" && itemId !== "/c") {
             route = "../listing?category="+ itemId;
             title = itemId;
           }
@@ -35,15 +35,15 @@ function Header() {
         }}
         items={[
           {
-            title: "Accueil",
+            title: "Home",
             itemId: "/",
             // you can use your own custom Icon component as well
             // icon is optional
             // elemBefore: () => <Icon name="star" />,
           },
           {
-            title: "Catégories",
-            itemId: "Categories",
+            title: "Categories",
+            itemId: "/c",
             // elemBefore: () => <Icon name="briefcase" />,
             subNav: [
               {
@@ -51,23 +51,23 @@ function Header() {
                 itemId: "films",
               },
               {
-                title: "Personnages",
+                title: "People",
                 itemId: "people",
               },
               {
-                title: "Planètes",
+                title: "Planets",
                 itemId: "planets",
               },
               {
-                title: "Espèces",
+                title: "Species",
                 itemId: "species",
               },
               {
-                title: "Vaisseaux spatiaux",
+                title: "Starships",
                 itemId: "starships",
               },
               {
-                title: "Véhicules",
+                title: "Vehicles",
                 itemId: "vehicles",
               },
             ],
